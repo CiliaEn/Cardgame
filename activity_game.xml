@@ -106,7 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/opCard2" />
 
     <TextView
-        android:id="@+id/textQuestion"
+        android:id="@+id/questionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -126,14 +126,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textQuestion"
+        app:layout_constraintTop_toBottomOf="@+id/questionView"
         app:layout_constraintVertical_bias="0.303" />
 
     <TextView
-        android:id="@+id/textCoins"
+        android:id="@+id/coinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:text="Coins: 0"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -152,148 +152,6 @@
         app:layout_constraintBottom_toTopOf="@+id/doneButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textQuestion" />
-
-    <ImageView
-        android:id="@+id/card2Val"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/card2"
-        app:layout_constraintEnd_toEndOf="@+id/card2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/card2"
-        app:layout_constraintTop_toTopOf="@+id/card2"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_spades" />
-
-    <ImageView
-        android:id="@+id/card3Val"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/card3"
-        app:layout_constraintEnd_toEndOf="@+id/card3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/card3"
-        app:layout_constraintTop_toTopOf="@+id/card3"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_spades" />
-
-    <ImageView
-        android:id="@+id/card1Val"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/card1"
-        app:layout_constraintEnd_toEndOf="@+id/card1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/card1"
-        app:layout_constraintTop_toTopOf="@+id/card1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/image_spades" />
-
-    <ImageView
-        android:id="@+id/opCard3Val"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/opCard3"
-        app:layout_constraintEnd_toEndOf="@+id/opCard3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opCard3"
-        app:layout_constraintTop_toTopOf="@+id/opCard3"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="?attr/actionBarItemBackground" />
-
-    <ImageView
-        android:id="@+id/opCard2Val"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/opCard2"
-        app:layout_constraintEnd_toEndOf="@+id/opCard2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opCard2"
-        app:layout_constraintTop_toTopOf="@+id/opCard2"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="?attr/actionBarItemBackground" />
-
-    <ImageView
-        android:id="@+id/opCard1Val"
-        android:layout_width="32dp"
-        android:layout_height="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/opCard1"
-        app:layout_constraintEnd_toStartOf="@+id/opCard2Val"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/opCard1"
-        app:layout_constraintTop_toTopOf="@+id/opCard1"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="?attr/actionBarItemBackground" />
-
-    <TextView
-        android:id="@+id/card1Num"
-        android:layout_width="45dp"
-        android:layout_height="73dp"
-        android:text="A"
-        android:textColor="#000000"
-        android:textSize="60sp"
-        app:drawableTint="#C11E1E"
-        app:layout_constraintBottom_toBottomOf="@+id/card1"
-        app:layout_constraintEnd_toEndOf="@+id/card1"
-        app:layout_constraintStart_toStartOf="@+id/card1"
-        app:layout_constraintTop_toTopOf="@+id/card1" />
-
-    <TextView
-        android:id="@+id/card3Num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A"
-        android:textColor="#000000"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/card3"
-        app:layout_constraintEnd_toEndOf="@+id/card3"
-        app:layout_constraintStart_toStartOf="@+id/card3"
-        app:layout_constraintTop_toTopOf="@+id/card3" />
-
-    <TextView
-        android:id="@+id/card2Num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A"
-        android:textColor="#000000"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/card2"
-        app:layout_constraintEnd_toEndOf="@+id/card2"
-        app:layout_constraintStart_toStartOf="@+id/card2"
-        app:layout_constraintTop_toTopOf="@+id/card2" />
-
-    <TextView
-        android:id="@+id/opCard3Num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/opCard3"
-        app:layout_constraintEnd_toEndOf="@+id/opCard3"
-        app:layout_constraintStart_toStartOf="@+id/opCard3"
-        app:layout_constraintTop_toTopOf="@+id/opCard3" />
-
-    <TextView
-        android:id="@+id/opCard2Num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/opCard2"
-        app:layout_constraintEnd_toEndOf="@+id/opCard2"
-        app:layout_constraintStart_toEndOf="@+id/opCard1"
-        app:layout_constraintTop_toTopOf="@+id/opCard2" />
-
-    <TextView
-        android:id="@+id/opCard1Num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#FFFFFF"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/opCard1"
-        app:layout_constraintEnd_toEndOf="@+id/opCard1"
-        app:layout_constraintStart_toStartOf="@+id/opCard1"
-        app:layout_constraintTop_toTopOf="@+id/opCard1" />
+        app:layout_constraintTop_toBottomOf="@+id/questionView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

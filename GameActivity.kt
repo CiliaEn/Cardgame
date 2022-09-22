@@ -1,5 +1,6 @@
 package com.example.cardgame
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,30 +8,25 @@ import android.widget.*
 
 class GameActivity : AppCompatActivity() {
 
-    lateinit var answerView : EditText
-    lateinit var title : TextView
+    private lateinit var title: TextView
+    private lateinit var questionView: TextView
+    private lateinit var answerView: EditText
+    private lateinit var button: Button
+    lateinit var coinView: TextView
     var index = 0
+    var score = 0
+    var deck = mutableListOf<Card>()
 
-    private lateinit var card1Val : ImageView
-    private lateinit var card2Val : ImageView
-    private lateinit var card3Val : ImageView
-    private lateinit var card1Num : TextView
-    private lateinit var card2Num : TextView
-    private lateinit var card3Num : TextView
+    lateinit var card1View: ImageView
+    lateinit var card2View: ImageView
+    lateinit var card3View: ImageView
+    lateinit var opCard1View: ImageView
+    lateinit var opCard2View: ImageView
+    lateinit var opCard3View: ImageView
 
-
-    lateinit var opCard1 : ImageView
-    lateinit var opCard2 : ImageView
-    lateinit var opCard3 : ImageView
-    private lateinit var opCard1Val : ImageView
-    private lateinit var opCard2Val : ImageView
-    private lateinit var opCard3Val : ImageView
-    private lateinit var opCard1Num : TextView
-    lateinit var opCard2Num : TextView
-    lateinit var opCard3Num : TextView
-
-
-
+    lateinit var card1: Card
+    lateinit var card2: Card
+    lateinit var card3: Card
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -38,121 +34,130 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        answerView = findViewById(R.id.answerView)
-
-        card1Val = findViewById(R.id.card1Val)
-        card2Val = findViewById(R.id.card2Val)
-        card3Val = findViewById(R.id.card3Val)
-        card1Num = findViewById(R.id.card1Num)
-        card2Num = findViewById(R.id.card2Num)
-        card3Num = findViewById(R.id.card3Num)
-
-
-        opCard1 = findViewById(R.id.opCard1)
-        opCard2 = findViewById(R.id.opCard2)
-        opCard3 = findViewById(R.id.opCard3)
-        opCard1Val = findViewById(R.id.opCard1Val)
-        opCard2Val = findViewById(R.id.opCard2Val)
-        opCard3Val = findViewById(R.id.opCard3Val)
-        opCard1Num = findViewById(R.id.opCard1Num)
-        opCard2Num = findViewById(R.id.opCard2Num)
-        opCard3Num = findViewById(R.id.opCard3Num)
-
-
         title = findViewById(R.id.titleTextView)
+        answerView = findViewById(R.id.answerView)
+        questionView = findViewById(R.id.questionView)
+        coinView = findViewById(R.id.coinView)
 
-        dealCard(card1Val, card1Num)
-        dealCard(card2Val, card2Num)
-        dealCard(card3Val, card3Num)
+        card1View = findViewById(R.id.card1)
+        card2View = findViewById(R.id.card2)
+        card3View = findViewById(R.id.card3)
 
-        val button = findViewById<Button>(R.id.doneButton)
+        opCard1View = findViewById(R.id.opCard1)
+        opCard2View = findViewById(R.id.opCard2)
+        opCard3View = findViewById(R.id.opCard3)
+
+        createDeck()
+        deck.shuffle()
+
+        card1 = dealCard(card1View)
+        card2 = dealCard(card2View)
+        card3 = dealCard(card3View)
+
+        button = findViewById<Button>(R.id.doneButton)
         button.setOnClickListener {
             handleButtonPress()
         }
-
-
-
     }
 
+    fun createDeck() {
+
+        val card = Card(R.drawable.ace_clubs, "A", "Clubs")
+        val card2 = Card(R.drawable.ace_spades, "A", "Spades")
+        val card3 = Card(R.drawable.ace_hearts, "A", "Hearts")
+        val card4 = Card(R.drawable.ace_diamonds, "A", "Diamonds")
+
+        val card5 = Card(R.drawable.king_clubs, "K", "Clubs")
+        val card6 = Card(R.drawable.king_spades, "K", "Spades")
+        val card7 = Card(R.drawable.king_hearts, "K", "Hearts")
+        val card8 = Card(R.drawable.king_diamonds, "K", "Diamonds")
+
+        val card9 = Card(R.drawable.queen_clubs, "Q", "Clubs")
+        val card10 = Card(R.drawable.queen_spades, "Q", "Spades")
+        val card11 = Card(R.drawable.queen_hearts, "Q", "Hearts")
+        val card12 = Card(R.drawable.queen_diamonds, "Q", "Diamonds")
+
+        deck = arrayListOf(
+            card,
+            card2,
+            card3,
+            card4,
+            card5,
+            card6,
+            card7,
+            card8,
+            card9,
+            card10,
+            card11,
+            card12
+        )
+    }
 
     fun handleButtonPress() {
 
-
-        if(index < 2) {
+        if (index < 2) {
             var answer = answerView.text.toString()
 
             if (answer.contains("1")) {
-                dealCard(card1Val, card1Num)
+                dealCard(card1View)
             }
             if (answer.contains("2")) {
-                dealCard(card2Val, card2Num)
+                dealCard(card2View)
             }
             if (answer.contains("3")) {
-                dealCard(card3Val, card3Num)
+                dealCard(card3View)
             }
 
             index++
             title.text = "Round 2 of 2"
-        }
-        else{
-           title.text = "Klar"
-            opCard1.setImageResource(R.drawable.blankcard)
-            opCard2.setImageResource(R.drawable.blankcard)
-            opCard3.setImageResource(R.drawable.blankcard)
-            dealCard(opCard1Val, opCard1Num)
-            dealCard(opCard2Val, opCard2Num)
-            dealCard(opCard3Val, opCard3Num)
+
+        } else if (button.text != "Play again"){
+            val opCard1 = dealCard(opCard1View)
+            val opCard2 = dealCard(opCard2View)
+            val opCard3 = dealCard(opCard3View)
             //Kolla om det är en stege, par elr triss
-        }
 
-    }
+            val combo: Int = checkCombo(card1, card2, card3)
+            val opCombo: Int = checkCombo(opCard1, opCard2, opCard3)
 
-    fun dealCard(value: ImageView, number : TextView) {
+            title.setTextColor(Color.parseColor("#26703C"))
 
+            if (combo > opCombo) {
+                questionView.text = "You won, +10coins"
+                score += 10
 
-        val index = (1..4).random()
-
-        when (index){
-
-            1 -> {
-                value.setImageResource(R.drawable.image_hearts)
+            } else if (combo < opCombo) {
+                questionView.text = "You lost, -5 coins"
+                score -= 5
+            }else{
+                questionView.text = "It's a tie"
             }
-            2 -> {
-                value.setImageResource(R.drawable.image_diamonds)
-            }
-            3 -> {
-                value.setImageResource(R.drawable.image_clubs)
-            }
-            4 -> {
-                value.setImageResource(R.drawable.image_spades)
-            }
-
-        }
-
-        val index2 = (1..3).random()
-
-        when (index2){
-
-            1 -> {
-                number.text == "A"
-            }
-            2 -> {
-                number.text == "K"
-            }
-            3 -> {
-                number.text == "Q"
-            }
-
-        }
-        if(index <= 2){
-            number.setTextColor(Color.parseColor("#bdbdbd"))
-
-        }else{
-            number.setTextColor(Color.parseColor("#bdbdbd"))
-        }
-
-
+            coinView.text = "Coins: $score"
+            button.text = "Play again"
         }
     }
+
+    fun dealCard(cardView: ImageView): Card {
+
+        //gör så att samma kombo av value och number inte kan finnas två ggr
+
+        val currentCard = deck[0]
+        cardView.setImageResource(currentCard.image)
+        deck.remove(currentCard)
+        return currentCard
+    }
+
+    fun checkCombo(cardA: Card, cardB: Card, cardC: Card): Int {
+
+        if (cardA.value == cardB.value && cardB.value == cardC.value) {
+            //Triss
+            return 2
+        } else if (cardA.value == cardB.value || cardB.value == cardC.value || cardA.value == cardC.value) {
+            //Par
+            return 1
+        }
+        return 3
+    }
+}
 
 
