@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#26703C"
+    tools:context=".GameActivity">
+
+    <ImageView
+        android:id="@+id/opCard1"
+        android:layout_width="79dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/opCard2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/image_backofcard" />
+
+    <ImageView
+        android:id="@+id/opCard2"
+        android:layout_width="79dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/image_backofcard" />
+
+    <ImageView
+        android:id="@+id/opCard3"
+        android:layout_width="79dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="85dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/opCard2"
+        app:layout_constraintStart_toStartOf="@+id/opCard2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.026"
+        app:srcCompat="@drawable/image_backofcard" />
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="79dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doneButton"
+        app:layout_constraintVertical_bias="0.297"
+        app:srcCompat="@drawable/blankcard" />
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="79dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doneButton"
+        app:layout_constraintVertical_bias="0.297"
+        app:srcCompat="@drawable/blankcard" />
+
+    <ImageView
+        android:id="@+id/card3"
+        android:layout_width="79dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doneButton"
+        app:layout_constraintVertical_bias="0.297"
+        app:srcCompat="@drawable/blankcard" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="130dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opCard1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/screen_shot_2022_09_20_at_14_55_07_removebg_preview__1_" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:text="Round 1 of 2"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opCard2" />
+
+    <TextView
+        android:id="@+id/textQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Which cards do you want to discard?"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <Button
+        android:id="@+id/doneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#8BC34A"
+        android:text="Done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textQuestion"
+        app:layout_constraintVertical_bias="0.303" />
+
+    <TextView
+        android:id="@+id/textCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Coins: 0"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/answerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="27dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textQuestion" />
+
+    <ImageView
+        android:id="@+id/card2Val"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card2"
+        app:layout_constraintEnd_toEndOf="@+id/card2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/card2"
+        app:layout_constraintTop_toTopOf="@+id/card2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/image_spades" />
+
+    <ImageView
+        android:id="@+id/card3Val"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card3"
+        app:layout_constraintEnd_toEndOf="@+id/card3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/card3"
+        app:layout_constraintTop_toTopOf="@+id/card3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/image_spades" />
+
+    <ImageView
+        android:id="@+id/card1Val"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/card1"
+        app:layout_constraintEnd_toEndOf="@+id/card1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/card1"
+        app:layout_constraintTop_toTopOf="@+id/card1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/image_spades" />
+
+    <ImageView
+        android:id="@+id/opCard3Val"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/opCard3"
+        app:layout_constraintEnd_toEndOf="@+id/opCard3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/opCard3"
+        app:layout_constraintTop_toTopOf="@+id/opCard3"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="?attr/actionBarItemBackground" />
+
+    <ImageView
+        android:id="@+id/opCard2Val"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/opCard2"
+        app:layout_constraintEnd_toEndOf="@+id/opCard2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/opCard2"
+        app:layout_constraintTop_toTopOf="@+id/opCard2"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="?attr/actionBarItemBackground" />
+
+    <ImageView
+        android:id="@+id/opCard1Val"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        app:layout_constraintBottom_toBottomOf="@+id/opCard1"
+        app:layout_constraintEnd_toStartOf="@+id/opCard2Val"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/opCard1"
+        app:layout_constraintTop_toTopOf="@+id/opCard1"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="?attr/actionBarItemBackground" />
+
+    <TextView
+        android:id="@+id/card1Num"
+        android:layout_width="45dp"
+        android:layout_height="73dp"
+        android:text="A"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:drawableTint="#C11E1E"
+        app:layout_constraintBottom_toBottomOf="@+id/card1"
+        app:layout_constraintEnd_toEndOf="@+id/card1"
+        app:layout_constraintStart_toStartOf="@+id/card1"
+        app:layout_constraintTop_toTopOf="@+id/card1" />
+
+    <TextView
+        android:id="@+id/card3Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/card3"
+        app:layout_constraintEnd_toEndOf="@+id/card3"
+        app:layout_constraintStart_toStartOf="@+id/card3"
+        app:layout_constraintTop_toTopOf="@+id/card3" />
+
+    <TextView
+        android:id="@+id/card2Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:textColor="#000000"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/card2"
+        app:layout_constraintEnd_toEndOf="@+id/card2"
+        app:layout_constraintStart_toStartOf="@+id/card2"
+        app:layout_constraintTop_toTopOf="@+id/card2" />
+
+    <TextView
+        android:id="@+id/opCard3Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/opCard3"
+        app:layout_constraintEnd_toEndOf="@+id/opCard3"
+        app:layout_constraintStart_toStartOf="@+id/opCard3"
+        app:layout_constraintTop_toTopOf="@+id/opCard3" />
+
+    <TextView
+        android:id="@+id/opCard2Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/opCard2"
+        app:layout_constraintEnd_toEndOf="@+id/opCard2"
+        app:layout_constraintStart_toEndOf="@+id/opCard1"
+        app:layout_constraintTop_toTopOf="@+id/opCard2" />
+
+    <TextView
+        android:id="@+id/opCard1Num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/opCard1"
+        app:layout_constraintEnd_toEndOf="@+id/opCard1"
+        app:layout_constraintStart_toStartOf="@+id/opCard1"
+        app:layout_constraintTop_toTopOf="@+id/opCard1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
