@@ -46,38 +46,38 @@
         app:srcCompat="@drawable/image_backofcard" />
 
     <ImageView
-        android:id="@+id/card1"
+        android:id="@+id/currentCard1"
         android:layout_width="79dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.243"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doneButton"
-        app:layout_constraintVertical_bias="0.297"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.637"
         app:srcCompat="@drawable/blankcard" />
 
     <ImageView
-        android:id="@+id/card2"
+        android:id="@+id/currentCard2"
         android:layout_width="79dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doneButton"
-        app:layout_constraintVertical_bias="0.297"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.637"
         app:srcCompat="@drawable/blankcard" />
 
     <ImageView
-        android:id="@+id/card3"
+        android:id="@+id/currentCard3"
         android:layout_width="79dp"
         android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doneButton"
-        app:layout_constraintVertical_bias="0.297"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.637"
         app:srcCompat="@drawable/blankcard" />
 
     <ImageView
@@ -117,17 +117,17 @@
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <Button
-        android:id="@+id/doneButton"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#8BC34A"
         android:text="Done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionView"
-        app:layout_constraintVertical_bias="0.303" />
+        app:layout_constraintVertical_bias="0.245" />
 
     <TextView
         android:id="@+id/coinView"
@@ -149,9 +149,22 @@
         android:layout_marginBottom="27dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionView" />
+
+    <Button
+        android:id="@+id/quitButton"
+        android:layout_width="70dp"
+        android:layout_height="38dp"
+        android:backgroundTint="#CD1313"
+        android:text="Quit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

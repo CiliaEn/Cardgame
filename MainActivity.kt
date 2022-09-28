@@ -16,10 +16,8 @@ class MainActivity : AppCompatActivity() {
             handleButtonPress()
         }
     }
-
     fun handleButtonPress(){
         val intent = Intent(this, GameActivity::class.java)
-
         startActivity(intent)
     }
 }
