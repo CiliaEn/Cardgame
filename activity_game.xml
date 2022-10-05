@@ -11,10 +11,10 @@
         android:id="@+id/opCard1"
         android:layout_width="79dp"
         android:layout_height="120dp"
-        android:layout_marginEnd="7dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/opCard2"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.975"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026"
@@ -35,69 +35,34 @@
         android:id="@+id/opCard3"
         android:layout_width="79dp"
         android:layout_height="120dp"
-        android:layout_marginStart="85dp"
+        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toEndOf="@+id/opCard2"
-        app:layout_constraintStart_toStartOf="@+id/opCard2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026"
         app:srcCompat="@drawable/image_backofcard" />
 
     <ImageView
-        android:id="@+id/currentCard1"
-        android:layout_width="79dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.243"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.637"
-        app:srcCompat="@drawable/blankcard" />
-
-    <ImageView
-        android:id="@+id/currentCard2"
-        android:layout_width="79dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.637"
-        app:srcCompat="@drawable/blankcard" />
-
-    <ImageView
-        android:id="@+id/currentCard3"
-        android:layout_width="79dp"
-        android:layout_height="120dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.637"
-        app:srcCompat="@drawable/blankcard" />
-
-    <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="130dp"
-        android:layout_height="111dp"
+        android:layout_width="141dp"
+        android:layout_height="116dp"
         android:layout_marginTop="19dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/opCard1"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/screen_shot_2022_09_20_at_14_55_07_removebg_preview__1_" />
+        app:srcCompat="@drawable/hands" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="160dp"
         android:text="Round 1 of 2"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,62 +74,89 @@
         android:id="@+id/questionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="24dp"
         android:text="Which cards do you want to discard?"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/doneButton"
+        android:layout_width="97dp"
+        android:layout_height="52dp"
         android:backgroundTint="#8BC34A"
         android:text="Done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionView"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintVertical_bias="0.702" />
 
     <TextView
         android:id="@+id/coinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="Coins: 0"
+        android:text="Coins: 15"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/answerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="27dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionView" />
-
     <Button
         android:id="@+id/quitButton"
         android:layout_width="70dp"
         android:layout_height="38dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="#CD1313"
         android:text="Quit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/doneButton" />
+
+    <ImageButton
+        android:id="@+id/card2Button"
+        android:layout_width="73dp"
+        android:layout_height="123dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.73"
+        app:srcCompat="@drawable/image_backofcard" />
+
+    <ImageButton
+        android:id="@+id/card3Button"
+        android:layout_width="73dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="23dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card2Button"
+        app:srcCompat="@drawable/image_backofcard" />
+
+    <ImageButton
+        android:id="@+id/card1Button"
+        android:layout_width="73dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="23dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        app:layout_constraintEnd_toStartOf="@+id/card2Button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/image_backofcard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.example.cardgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.util.Log
 import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
@@ -11,12 +11,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val button = findViewById<ImageButton>(R.id.playButton)
-        button.setOnClickListener {
+        val playButton = findViewById<ImageButton>(R.id.playButton)
+        playButton.setOnClickListener {
             handleButtonPress()
         }
     }
-    fun handleButtonPress(){
+    private fun handleButtonPress(){
         val intent = Intent(this, GameActivity::class.java)
         startActivity(intent)
     }

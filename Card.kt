@@ -1,4 +1,18 @@
 package com.example.cardgame
 
-class Card(var image : Int, var value : String, var suite : String) {
+import java.io.Serializable
+
+class Card(var image : Int, var value : String, var suite : String) : Serializable {
+
+    var changeCard : Boolean = false
+
+    fun getCardStatus() : Boolean {
+        return changeCard
+    }
+    fun setCardStatusToTrue(){
+        changeCard = true
+    }
+    fun setCardStatusToFalse(){
+        changeCard = false
+    }
 }

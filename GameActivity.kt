@@ -2,25 +2,33 @@ package com.example.cardgame
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 
 class GameActivity : AppCompatActivity() {
 
-    private lateinit var title: TextView
+    private lateinit var titleView: TextView
     private lateinit var questionView: TextView
-    private lateinit var answerView: EditText
     private lateinit var doneButton: Button
     lateinit var quitButton: Button
     lateinit var coinView: TextView
-    var index = 0
-    var score = 0
+    var roundCounter = 0
+    var coins = 15
     var deck = mutableListOf<Card>()
+    var bet : Int = 0
+    var getContent = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        //3
+        bet = result.data?.getIntExtra("bet", 0) ?: 0
+        Log.d("!!!", "back $bet")
+    }
 
-    lateinit var card1View: ImageView
-    lateinit var card2View: ImageView
-    lateinit var card3View: ImageView
+    lateinit var card1Button: ImageButton
+    lateinit var card2Button: ImageButton
+    lateinit var card3Button: ImageButton
     lateinit var opCard1View: ImageView
     lateinit var opCard2View: ImageView
     lateinit var opCard3View: ImageView
@@ -29,38 +37,49 @@ class GameActivity : AppCompatActivity() {
     lateinit var currentCard2: Card
     lateinit var currentCard3: Card
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
-        card1View = findViewById(R.id.currentCard1)
-        card2View = findViewById(R.id.currentCard2)
-        card3View = findViewById(R.id.currentCard3)
+        card1Button = findViewById(R.id.card1Button)
+        card2Button = findViewById(R.id.card2Button)
+        card3Button = findViewById(R.id.card3Button)
 
         opCard1View = findViewById(R.id.opCard1)
         opCard2View = findViewById(R.id.opCard2)
         opCard3View = findViewById(R.id.opCard3)
 
-        answerView = findViewById(R.id.answerView)
         questionView = findViewById(R.id.questionView)
         coinView = findViewById(R.id.coinView)
 
-        doneButton = findViewById(R.id.button)
+        doneButton = findViewById(R.id.doneButton)
         doneButton.setOnClickListener {
             handleButtonPress()
         }
         quitButton = findViewById(R.id.quitButton)
         quitButton.setOnClickListener {
-            handleButtonPress2()
+            finish()
         }
+        card1Button.setOnClickListener{
+            currentCard1.setCardStatusToTrue()
+        }
+        card2Button.setOnClickListener{
+            currentCard2.setCardStatusToTrue()
+        }
+        card3Button.setOnClickListener{
+            currentCard3.setCardStatusToTrue()
+        }
+
         newRound()
     }
 
-    fun newRound() {
-        title = findViewById(R.id.titleTextView)
-        title.text = "Round 1 of 2"
-        title.setTextColor(Color.parseColor("#000000"))
+    private fun newRound() {
+        titleView = findViewById(R.id.titleTextView)
+        titleView.text = "Round 1 of 2"
+        titleView.setTextColor(Color.parseColor("#000000"))
         questionView.text = "Which cards do you want to discard?"
         doneButton.text = "Done"
         opCard1View.setImageResource(R.drawable.image_backofcard)
@@ -70,33 +89,30 @@ class GameActivity : AppCompatActivity() {
         createDeck()
         deck.shuffle()
 
-        currentCard1 = dealCard(card1View)
-        currentCard2 = dealCard(card2View)
-        currentCard3 = dealCard(card3View)
+        currentCard1 = dealCard(card1Button)
+        currentCard2 = dealCard(card2Button)
+        currentCard3 = dealCard(card3Button)
 
-        index = 0
+        roundCounter = 0
     }
 
-    private fun handleButtonPress2() {
-        finish()
-    }
 
-    fun createDeck() {
+    private fun createDeck() {
 
-        val card1 = Card(R.drawable.ace_clubs, "A", "Clubs")
-        val card2 = Card(R.drawable.ace_spades, "A", "Spades")
-        val card3 = Card(R.drawable.ace_hearts, "A", "Hearts")
-        val card4 = Card(R.drawable.ace_diamonds, "A", "Diamonds")
+        val card1 = Card(R.drawable.a_clubs, "A", "Clubs")
+        val card2 = Card(R.drawable.a_spades, "A", "Spades")
+        val card3 = Card(R.drawable.a_hearts, "A", "Hearts")
+        val card4 = Card(R.drawable.a_diamonds, "A", "Diamonds")
 
-        val card5 = Card(R.drawable.king_clubs, "K", "Clubs")
-        val card6 = Card(R.drawable.king_spades, "K", "Spades")
-        val card7 = Card(R.drawable.king_hearts, "K", "Hearts")
-        val card8 = Card(R.drawable.king_diamonds, "K", "Diamonds")
+        val card5 = Card(R.drawable.k_clubs, "K", "Clubs")
+        val card6 = Card(R.drawable.k_spades, "K", "Spades")
+        val card7 = Card(R.drawable.k_hearts, "K", "Hearts")
+        val card8 = Card(R.drawable.k_diamonds, "K", "Diamonds")
 
-        val card9 = Card(R.drawable.queen_clubs, "Q", "Clubs")
-        val card10 = Card(R.drawable.queen_spades, "Q", "Spades")
-        val card11 = Card(R.drawable.queen_hearts, "Q", "Hearts")
-        val card12 = Card(R.drawable.queen_diamonds, "Q", "Diamonds")
+        val card9 = Card(R.drawable.q_clubs, "Q", "Clubs")
+        val card10 = Card(R.drawable.q_spades, "Q", "Spades")
+        val card11 = Card(R.drawable.q_hearts, "Q", "Hearts")
+        val card12 = Card(R.drawable.q_diamonds, "Q", "Diamonds")
 
         deck = arrayListOf(
             card1,
@@ -114,49 +130,72 @@ class GameActivity : AppCompatActivity() {
         )
     }
 
-    fun handleButtonPress() {
+    private fun handleButtonPress() {
 
         if (doneButton.text == "Play again") {
             newRound()
-        } else if (index < 2) {
-            var answer = answerView.text.toString()
+        } else if (roundCounter < 2) {
 
-            if (answer.contains("1")) {
-                currentCard1 = dealCard(card1View)
+            if (currentCard1.getCardStatus()){
+                currentCard1 = dealCard(card1Button)
+                currentCard1.setCardStatusToFalse()
             }
-            if (answer.contains("2")) {
-                currentCard2 = dealCard(card2View)
+            if (currentCard2.getCardStatus()){
+                currentCard2= dealCard(card2Button)
+                currentCard2.setCardStatusToFalse()
             }
-            if (answer.contains("3")) {
-                currentCard3 = dealCard(card3View)
+            if (currentCard3.getCardStatus()){
+                currentCard3 = dealCard(card3Button)
+                currentCard3.setCardStatusToFalse()
             }
-            index++
-            title.text = "Round 2 of 2"
+            roundCounter++
+            titleView.text = "Round 2 of 2"
 
-        } else {
+        } else{
+            val intent = Intent(this, BettingActivity::class.java)
+
+            intent.putExtra("coins", coins)
+            intent.putExtra("currentCard1", currentCard1)
+            intent.putExtra("currentCard2", currentCard2)
+            intent.putExtra("currentCard3", currentCard3)
+
+            getContent.launch(intent)
+
+
             val opCard1 = dealCard(opCard1View)
             val opCard2 = dealCard(opCard2View)
             val opCard3 = dealCard(opCard3View)
 
-            val combo: Int = checkCombo(currentCard1, currentCard2, currentCard3)
-            val opCombo: Int = checkCombo(opCard1, opCard2, opCard3)
+            val combo: Int = getCombo(currentCard1, currentCard2, currentCard3)
+            val opCombo: Int = getCombo(opCard1, opCard2, opCard3)
 
             if (combo > opCombo) {
-                questionView.text = "You won, +10coins"
-                score += 10
 
+                questionView.text = "You won, here's ${bet * 2} coins"
+                coins += bet * 2
+                Log.d("!!!", "Win $bet")
             } else if (combo < opCombo) {
-                questionView.text = "You lost, -5 coins"
-                score -= 5
-            } else if (combo == opCombo) {
+                Log.d("!!!", "lost $bet")
+                questionView.text = "You lost"
+                coins -= bet
+            } else{
                 questionView.text = "It's a tie"
             }
-            coinView.text = "Coins: $score"
-            doneButton.text = "Play again"
+
+            if (coins <= 0){
+                titleView.text = "You ran out of coins"
+                doneButton.text = "Start new round"
+                coinView.text = "Coins: 15"
+            }
+            //1
+            Log.d("!!!", "round over $bet")
+                coinView.text = "Coins: $coins"
+                doneButton.text = "Play again"
+
         }
     }
 
-    fun dealCard(cardView: ImageView): Card {
+    private fun dealCard(cardView: ImageView): Card {
 
         val card = deck[0]
         cardView.setImageResource(card.image)
@@ -164,7 +203,7 @@ class GameActivity : AppCompatActivity() {
         return card
     }
 
-    fun checkCombo(cardA: Card, cardB: Card, cardC: Card): Int {
+    private fun getCombo(cardA: Card, cardB: Card, cardC: Card): Int {
 
         if (cardA.value == cardB.value && cardB.value == cardC.value) {
             //Triss
