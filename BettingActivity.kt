@@ -8,18 +8,18 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 
 class BettingActivity : AppCompatActivity() {
 
     lateinit var button5: Button
     lateinit var button10: Button
     lateinit var button15: Button
-    lateinit var questionView : TextView
+    lateinit var quitButton: Button
     lateinit var card1Button: ImageButton
     lateinit var card2Button: ImageButton
     lateinit var card3Button: ImageButton
-    lateinit var coinView : TextView
-
+    private lateinit var coinView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,13 +35,20 @@ class BettingActivity : AppCompatActivity() {
         }
         button10 = findViewById(R.id.button10)
         button10.setOnClickListener {
-            handleButtonPress(10)
+            if (coins < 10) {
+                Toast.makeText(this, "You don't have 10 coins to bet", Toast.LENGTH_SHORT).show()
+            } else {
+                handleButtonPress(10)
+            }
         }
         button15 = findViewById(R.id.button15)
         button15.setOnClickListener {
-            handleButtonPress(15)
+            if (coins < 15) {
+                Toast.makeText(this, "You don't have 15 coins to bet", Toast.LENGTH_SHORT).show()
+            } else {
+                handleButtonPress(15)
+            }
         }
-        questionView = findViewById(R.id.questionView)
 
         var currentCard1 = intent.getSerializableExtra("currentCard1") as Card
         card1Button = findViewById(R.id.card1Button)
@@ -54,11 +61,14 @@ class BettingActivity : AppCompatActivity() {
         var currentCard3 = intent.getSerializableExtra("currentCard3") as Card
         card3Button = findViewById(R.id.card3Button)
         card3Button.setImageResource(currentCard3.image)
+
+        quitButton = findViewById(R.id.quitButton)
+        quitButton.setOnClickListener {
+            handleButtonPress(0)
+        }
     }
 
     private fun handleButtonPress(bet: Int) {
-        //2
-        Log.d("!!!", "betting: $bet")
 
         val intent = Intent()
         intent.putExtra("bet", bet)
@@ -66,8 +76,4 @@ class BettingActivity : AppCompatActivity() {
 
         finish()
     }
-
-
-
-
 }
